@@ -44,7 +44,7 @@ const AppHeader = ({ title, onBackPress, onFilterPress }: AppHeaderProps) => {
 
 const styles = StyleSheet.create({
   headerContainer: {
-    backgroundColor: theme.colors.bgExtraLight,
+    backgroundColor: theme.colors.bg100,
     justifyContent: "space-around",
     borderBottomWidth: 0, // Remove the default bottom border
     borderTopWidth: 0,

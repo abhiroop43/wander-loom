@@ -1,8 +1,10 @@
 export const theme = {
   colors: {
-    bgExtraLight: "#eaf4ff",
-    bgLight: "#a2d4ff",
-    bgDark: "#006fce",
+    bg100: "#eaf4ff",
+    bg200: "#a2d4ff",
+    bg400: "#71b1ff",
+    bg500: "#006fce",
+    bg800: "#00396e",
     text: "#333",
   },
 };
