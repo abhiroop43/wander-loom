@@ -6,5 +6,6 @@ export const theme = {
     bg500: "#006fce",
     bg800: "#00396e",
     text: "#333",
+    white: "#fff",
   },
 };

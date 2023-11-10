@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 80,
-    backgroundColor: "#fff",
+    backgroundColor: theme.colors.white,
     paddingLeft: 10,
   },
   input: {
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingLeft: 10,
     fontSize: 16,
+    fontFamily: "Poppins-regular",
   },
   searchIcon: {
     marginRight: 10,

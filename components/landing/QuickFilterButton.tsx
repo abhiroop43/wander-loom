@@ -2,6 +2,7 @@ import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../../constants/theme";
+import AppText from "../shared/AppText";
 
 interface QuickFilterButtonProps {
   title: string;
@@ -24,11 +25,11 @@ const QuickFilterButton = ({
           style={styles.button}
           start={{ x: 0.3, y: 0.2 }}
         >
-          <Text style={styles.selectedButtonText}>{title}</Text>
+          <AppText style={styles.selectedButtonText}>{title}</AppText>
         </LinearGradient>
       ) : (
         <LinearGradient colors={["#f1f1f1", "#f1f1f1"]} style={styles.button}>
-          <Text style={styles.deselectedButtonText}>{title}</Text>
+          <AppText style={styles.deselectedButtonText}>{title}</AppText>
         </LinearGradient>
       )}
     </TouchableOpacity>
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     width: 110,
   },
   selectedButtonText: {
-    color: "#fff",
+    color: theme.colors.white,
     fontSize: 10,
     fontWeight: "bold",
   },

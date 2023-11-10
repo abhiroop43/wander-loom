@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { Header, Icon } from "@rneui/themed";
 import { theme } from "../../constants/theme";
 
@@ -15,7 +15,11 @@ const AppHeader = ({ title, onBackPress, onFilterPress }: AppHeaderProps) => {
       placement="center"
       centerComponent={{
         text: title,
-        style: { color: theme.colors.text, fontSize: 20 },
+        style: {
+          color: theme.colors.text,
+          fontSize: 20,
+          fontFamily: "Poppins-regular",
+        },
       }}
       leftComponent={
         onBackPress && (

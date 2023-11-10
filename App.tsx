@@ -1,18 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-
-import { Platform } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import * as Font from "expo-font";
+import { Platform, View, Text } from "react-native";
 import {
-  Button,
   lightColors,
   darkColors,
   createTheme,
   ThemeProvider,
 } from "@rneui/themed";
 import LandingScreen from "./screens/LandingScreen";
-import AppHeader from "./components/shared/AppHeader";
-import StartScreen from "./screens/StartScreen";
+import {
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+  Poppins_700Bold,
+} from "@expo-google-fonts/poppins";
+import React, { useEffect, useState } from "react";
 
 const theme = createTheme({
   lightColors: {
@@ -30,6 +32,36 @@ const theme = createTheme({
 });
 
 export default function App() {
+  let [fontsLoaded, setFontLoaded] = useState(false);
+
+  // if (!fontsLoaded && !fontError) {
+  //   return <AppLoading />;
+  // }
+
+  const fetchFonts = async () => {
+    await Font.loadAsync({
+      "Poppins-regular": Poppins_400Regular,
+      "Poppins-semibold": Poppins_600SemiBold,
+      "Poppins-bold": Poppins_700Bold,
+    });
+  };
+
+  useEffect(() => {
+    async function getFonts() {
+      await fetchFonts();
+      setFontLoaded(true);
+    }
+    getFonts();
+  }, []);
+
+  if (!fontsLoaded) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
