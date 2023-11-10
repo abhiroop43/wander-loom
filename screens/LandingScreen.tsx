@@ -7,6 +7,7 @@ import AppHeader from "../components/shared/AppHeader";
 import { theme } from "../constants/theme";
 import SearchField from "../components/landing/SearchField";
 import QuickFilterButton from "../components/landing/QuickFilterButton";
+import PlacesList from "../components/landing/PlacesList";
 
 const LandingScreen = () => {
   const [searchFilterVisible, setSearchFilterVisible] = useState(false);
@@ -17,12 +18,18 @@ const LandingScreen = () => {
   };
   return (
     <SafeAreaView style={styles.rootContainer}>
-      <AppHeader
-        title="Wander Loom"
-        onBackPress={() => {}}
-        onFilterPress={onFilterPress}
-      />
-      {searchFilterVisible && <SearchField />}
+      <View style={styles.headerContainer}>
+        <AppHeader
+          title="Wander Loom"
+          onBackPress={() => {}}
+          onFilterPress={onFilterPress}
+        />
+      </View>
+      {searchFilterVisible && (
+        <View style={styles.searchContainer}>
+          <SearchField />
+        </View>
+      )}
       <View style={styles.quickFilterContainer}>
         <QuickFilterButton
           title="Places"
@@ -49,7 +56,9 @@ const LandingScreen = () => {
           }}
         />
       </View>
-      <View style={styles.filteredItemsContainer}></View>
+      <View style={styles.filteredItemsContainer}>
+        <PlacesList />
+      </View>
     </SafeAreaView>
   );
 };
@@ -60,15 +69,22 @@ const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: theme.colors.bg100,
     flex: 1,
+    flexDirection: "column",
+  },
+  headerContainer: {
+    flex: 2,
+  },
+  searchContainer: {
+    flex: 2,
   },
   quickFilterContainer: {
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     marginHorizontal: 15,
-    height: 10,
   },
   filteredItemsContainer: {
-    flex: 28,
+    flex: 12,
+    height: 35,
   },
 });
