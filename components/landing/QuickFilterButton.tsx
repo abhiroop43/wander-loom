@@ -1,8 +1,8 @@
-import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { theme } from "../../constants/theme";
-import AppText from "../shared/AppText";
+import React from 'react';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { theme } from '../../constants/theme';
+import AppText from '../shared/AppText';
 
 interface QuickFilterButtonProps {
   title: string;
@@ -11,12 +11,7 @@ interface QuickFilterButtonProps {
   filterParam: string;
 }
 
-const QuickFilterButton = ({
-  title,
-  selected,
-  onClick,
-  filterParam,
-}: QuickFilterButtonProps) => {
+const QuickFilterButton = ({ title, selected, onClick, filterParam }: QuickFilterButtonProps) => {
   return (
     <TouchableOpacity onPress={onClick} style={styles.container}>
       {selected ? (
@@ -28,7 +23,7 @@ const QuickFilterButton = ({
           <AppText style={styles.selectedButtonText}>{title}</AppText>
         </LinearGradient>
       ) : (
-        <LinearGradient colors={["#f1f1f1", "#f1f1f1"]} style={styles.button}>
+        <LinearGradient colors={['#f1f1f1', '#f1f1f1']} style={styles.button}>
           <AppText style={styles.deselectedButtonText}>{title}</AppText>
         </LinearGradient>
       )}
@@ -39,24 +34,33 @@ const QuickFilterButton = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 15,
-    overflow: "hidden",
+    overflow: 'hidden',
+    // ios shadow start //
+    shadowColor: 'rgba(0,0,0, .4)',
+    shadowOffset: { height: 1, width: 1 },
+    shadowOpacity: 1,
+    shadowRadius: 1,
+    // ios shadow end //
+    // android shadow start //
+    elevation: 2,
+    // android shadow end //
   },
   button: {
     paddingVertical: 6,
     paddingHorizontal: 20,
     borderRadius: 15,
-    alignItems: "center",
+    alignItems: 'center',
     width: 110,
   },
   selectedButtonText: {
     color: theme.colors.white,
     fontSize: 10,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   deselectedButtonText: {
     color: theme.colors.text,
     fontSize: 10,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
 });
 

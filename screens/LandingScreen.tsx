@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Card, Button } from "@rneui/themed";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { SafeAreaView } from "react-native-safe-area-context";
-import AppHeader from "../components/shared/AppHeader";
-import { theme } from "../constants/theme";
-import SearchField from "../components/landing/SearchField";
-import QuickFilterButton from "../components/landing/QuickFilterButton";
-import PlacesList from "../components/landing/PlacesList";
+import React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import AppHeader from '../components/shared/AppHeader';
+import { theme } from '../constants/theme';
+import SearchField from '../components/landing/SearchField';
+import QuickFilterButton from '../components/landing/QuickFilterButton';
+import PlacesList from '../components/landing/PlacesList';
 
 const LandingScreen = () => {
   const [searchFilterVisible, setSearchFilterVisible] = useState(false);
-  const [quickFilter, setQuickFilter] = useState("");
+  const [quickFilter, setQuickFilter] = useState('');
 
   const onFilterPress = () => {
     setSearchFilterVisible(!searchFilterVisible);
@@ -19,11 +17,7 @@ const LandingScreen = () => {
   return (
     <SafeAreaView style={styles.rootContainer}>
       <View style={styles.headerContainer}>
-        <AppHeader
-          title="Wander Loom"
-          onBackPress={() => {}}
-          onFilterPress={onFilterPress}
-        />
+        <AppHeader title="Explore" onBackPress={() => {}} onFilterPress={onFilterPress} />
       </View>
       {searchFilterVisible && (
         <View style={styles.searchContainer}>
@@ -34,25 +28,25 @@ const LandingScreen = () => {
         <QuickFilterButton
           title="Places"
           filterParam="places"
-          selected={quickFilter === "places"}
+          selected={quickFilter === 'places'}
           onClick={() => {
-            setQuickFilter("places");
+            setQuickFilter('places');
           }}
         />
         <QuickFilterButton
           title="Tour"
           filterParam="tour"
-          selected={quickFilter === "tour"}
+          selected={quickFilter === 'tour'}
           onClick={() => {
-            setQuickFilter("tour");
+            setQuickFilter('tour');
           }}
         />
         <QuickFilterButton
           title="Adventure"
           filterParam="adventure"
-          selected={quickFilter === "adventure"}
+          selected={quickFilter === 'adventure'}
           onClick={() => {
-            setQuickFilter("adventure");
+            setQuickFilter('adventure');
           }}
         />
       </View>
@@ -69,7 +63,7 @@ const styles = StyleSheet.create({
   rootContainer: {
     backgroundColor: theme.colors.bg100,
     flex: 1,
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   headerContainer: {
     flex: 2,
@@ -79,8 +73,8 @@ const styles = StyleSheet.create({
   },
   quickFilterContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginHorizontal: 15,
   },
   filteredItemsContainer: {
