@@ -1,20 +1,12 @@
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import * as Font from "expo-font";
-import { Platform, View, Text } from "react-native";
-import {
-  lightColors,
-  darkColors,
-  createTheme,
-  ThemeProvider,
-} from "@rneui/themed";
-import LandingScreen from "./screens/LandingScreen";
-import {
-  Poppins_400Regular,
-  Poppins_600SemiBold,
-  Poppins_700Bold,
-} from "@expo-google-fonts/poppins";
-import React, { useEffect, useState } from "react";
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as Font from 'expo-font';
+import { Platform, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { lightColors, darkColors, createTheme, ThemeProvider } from '@rneui/themed';
+import { Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold } from '@expo-google-fonts/poppins';
+import React, { useEffect, useState } from 'react';
+import BottomTabsNavigation from './navigation/BottomTabsNavigation';
 
 const theme = createTheme({
   lightColors: {
@@ -34,15 +26,11 @@ const theme = createTheme({
 export default function App() {
   let [fontsLoaded, setFontLoaded] = useState(false);
 
-  // if (!fontsLoaded && !fontError) {
-  //   return <AppLoading />;
-  // }
-
   const fetchFonts = async () => {
     await Font.loadAsync({
-      "Poppins-regular": Poppins_400Regular,
-      "Poppins-semibold": Poppins_600SemiBold,
-      "Poppins-bold": Poppins_700Bold,
+      'Poppins-regular': Poppins_400Regular,
+      'Poppins-semibold': Poppins_600SemiBold,
+      'Poppins-bold': Poppins_700Bold,
     });
   };
 
@@ -66,7 +54,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         <StatusBar style="auto" />
-        <LandingScreen />
+        <NavigationContainer>
+          <BottomTabsNavigation />
+        </NavigationContainer>
       </SafeAreaProvider>
     </ThemeProvider>
   );
