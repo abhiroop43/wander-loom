@@ -17,7 +17,7 @@ const PlacesList = () => {
         // parallaxScrollingScale={1}
         width={width}
         height={height * 0.35}
-        autoPlay={true}
+        // autoPlay={true}
         data={places}
         windowSize={5}
         scrollAnimationDuration={5000}

@@ -54,12 +54,14 @@ const styles = StyleSheet.create({
     flex: 1, // height: 100%
     backgroundColor: theme.colors.white,
     borderRadius: 30,
+    padding: 0,
+    overflow: 'hidden',
     // margin: 0,
     // paddingTop: 10,
     alignItems: 'center',
   },
   imageContainer: {
-    width: deviceWidth * 0.85,
+    width: deviceWidth * 0.93,
     height: deviceHeight * 0.23,
     alignItems: 'stretch',
     justifyContent: 'flex-start',
@@ -67,7 +69,7 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
   },
   image: {
-    borderRadius: 30,
+    // borderRadius: 30,
     height: '100%',
     width: '100%',
   },
