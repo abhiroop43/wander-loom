@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     // ios shadow end //
     // android shadow start //
-    elevation: 2,
+    elevation: 1,
     // android shadow end //
   },
   button: {

@@ -37,7 +37,7 @@ const SearchField = () => {
 
 const styles = StyleSheet.create({
   searchContainer: {
-    margin: 10,
+    margin: 5,
   },
   inputContainer: {
     flexDirection: 'row',

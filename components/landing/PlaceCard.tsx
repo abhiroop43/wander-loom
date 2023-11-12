@@ -1,16 +1,27 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { Dimensions, View, Text, StyleSheet, Image } from 'react-native';
 import { Card, Icon } from '@rneui/themed';
 import { Place } from '../../data';
 import { theme } from '../../constants/theme';
 import AppText from '../shared/AppText';
 
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
+
 const PlaceCard = (place: Place) => {
   // const realImageUrl = `../..${place.imageUrl}`;
   // console.log(realImageUrl);
+
+  // const find_dimesions = (layout: any) => {
+  //   const { x, y, width, height } = layout;
+  //   return { x, y, width, height };
+  // };
+
   return (
     <Card containerStyle={styles.cardContainer}>
-      <Image source={place.imageUrl} style={styles.image} />
+      <View style={styles.imageContainer}>
+        <Image source={place.imageUrl} style={styles.image} />
+      </View>
       <View>
         <Icon
           name={place.isFavorite ? 'heart' : 'heart-outline'}
@@ -44,14 +55,21 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     borderRadius: 30,
     // margin: 0,
-    padding: 0,
-    paddingTop: 10,
+    // paddingTop: 10,
     alignItems: 'center',
+  },
+  imageContainer: {
+    width: deviceWidth * 0.85,
+    height: deviceHeight * 0.23,
+    alignItems: 'stretch',
+    justifyContent: 'flex-start',
+    marginBottom: 8,
+    paddingBottom: 0,
   },
   image: {
     borderRadius: 30,
-    height: 210,
-    width: 380,
+    height: '100%',
+    width: '100%',
   },
   footerContainer: {
     // arrange inner elements horizaontally
@@ -59,8 +77,8 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     flex: 4,
-    marginTop: 10,
-    marginLeft: 25,
+    marginTop: 0,
+    marginLeft: deviceWidth * 0.05,
   },
 
   // style for the top level container of the rating pill
@@ -69,6 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    marginRight: deviceWidth * 0.05,
   },
 
   // style for the entire rating pill
@@ -93,7 +112,7 @@ const styles = StyleSheet.create({
   },
   favoriteIcon: {
     position: 'absolute',
-    top: -195,
+    top: -(deviceHeight * 0.22),
     right: 10,
     backgroundColor: theme.colors.white,
     color: theme.colors.text,

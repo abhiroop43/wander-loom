@@ -16,6 +16,7 @@ const BottomTabsNavigation = () => {
       screenOptions={{
         headerShown: false,
         tabBarStyle: styles.bottomTab,
+        headerStatusBarHeight: 0,
       }}
     >
       <Tab.Screen name="Home" component={HomeScreen} />

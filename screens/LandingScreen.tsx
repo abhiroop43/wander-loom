@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { Dimensions, View, StyleSheet, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AppHeader from '../components/shared/AppHeader';
 import { theme } from '../constants/theme';
 import SearchField from '../components/landing/SearchField';
 import QuickFilterButton from '../components/landing/QuickFilterButton';
 import PlacesList from '../components/landing/PlacesList';
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 const LandingScreen = () => {
   const [searchFilterVisible, setSearchFilterVisible] = useState(false);
@@ -66,23 +69,30 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   headerContainer: {
-    flex: 2,
-    top: -40,
+    flex: 2.3,
+    alignItems: 'center',
+    top: Platform.OS === 'ios' ? -(deviceHeight * 0.06) : 0,
+    // top: -(deviceHeight * 0.05),
   },
   searchContainer: {
     flex: 2,
-    top: -30,
+    // top: -30,
+    padding: 0,
   },
   quickFilterContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 15,
-    top: -40,
+    marginTop: 10,
+    top: Platform.OS === 'ios' ? -(deviceHeight * 0.03) : 0,
+
+    // top: -40,
   },
   filteredItemsContainer: {
     flex: 12,
     height: 35,
-    top: -80,
+    // top: -20,
+    top: Platform.OS === 'ios' ? -(deviceHeight * 0.03) : 0,
   },
 });
