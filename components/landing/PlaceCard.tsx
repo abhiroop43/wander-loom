@@ -1,23 +1,37 @@
-import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { Card, Icon } from "@rneui/themed";
-import { Place } from "../../data";
+import React from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
+import { Card, Icon } from '@rneui/themed';
+import { Place } from '../../data';
+import { theme } from '../../constants/theme';
+import AppText from '../shared/AppText';
 
 const PlaceCard = (place: Place) => {
   // const realImageUrl = `../..${place.imageUrl}`;
   // console.log(realImageUrl);
   return (
     <Card containerStyle={styles.cardContainer}>
-      <Image source={place.imageUrl} style={styles.image} resizeMode="cover" />
-      <View style={styles.overlay}>
-        <Text style={styles.placeName}>{place.name}</Text>
+      <Image source={place.imageUrl} style={styles.image} />
+      <View>
         <Icon
-          name={place.isFavorite ? "heart" : "heart-outline"}
+          name={place.isFavorite ? 'heart' : 'heart-outline'}
           type="ionicon"
-          color={place.isFavorite ? "red" : "#fff"}
-          size={30}
+          size={20}
           containerStyle={styles.favoriteIcon}
         />
+      </View>
+      <View style={styles.footerContainer}>
+        <View style={styles.textContainer}>
+          <AppText style={styles.placeName}>{place.name}</AppText>
+          <AppText>{place.country}</AppText>
+        </View>
+        <View style={styles.ratingContainer}>
+          <View style={styles.rating}>
+            <AppText>
+              <Icon name="star" type="ionicon" size={15} color={theme.colors.gold} style={styles.ratingIconStyle} />
+              {place.rating}
+            </AppText>
+          </View>
+        </View>
       </View>
     </Card>
   );
@@ -25,30 +39,66 @@ const PlaceCard = (place: Place) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    borderRadius: 10,
-    overflow: "hidden",
-    marginBottom: 10,
+    alignSelf: 'stretch', // width 100%
+    flex: 1, // height: 100%
+    backgroundColor: theme.colors.white,
+    borderRadius: 30,
+    // margin: 0,
+    padding: 0,
+    paddingTop: 10,
+    alignItems: 'center',
   },
   image: {
-    height: 200, // Adjust the height based on your preference
+    borderRadius: 30,
+    height: 210,
+    width: 380,
   },
-  overlay: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: 10,
+  footerContainer: {
+    // arrange inner elements horizaontally
+    flexDirection: 'row',
+  },
+  textContainer: {
+    flex: 4,
+    marginTop: 10,
+    marginLeft: 25,
+  },
+
+  // style for the top level container of the rating pill
+  ratingContainer: {
+    flex: 1,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  // style for the entire rating pill
+  rating: {
+    height: 25,
+    width: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.2)',
+    borderRadius: 10,
+    padding: 0,
+    margin: 0,
+  },
+
+  // style for the rating icon
+  ratingIconStyle: {
+    marginRight: 10,
   },
   placeName: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontWeight: 'bold',
   },
   favoriteIcon: {
-    position: "absolute",
-    top: 10,
+    position: 'absolute',
+    top: -195,
     right: 10,
+    backgroundColor: theme.colors.white,
+    color: theme.colors.text,
+    borderRadius: 999,
+    padding: 5,
   },
 });
 

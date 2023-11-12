@@ -8,6 +8,7 @@ export const theme = {
     bg700: '#1657FF',
     bg800: '#003EFF',
     text: '#5E6A81',
-    white: '#fff',
+    white: '#ffffff',
+    gold: '#FFD700',
   },
 };

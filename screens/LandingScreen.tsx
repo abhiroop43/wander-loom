@@ -67,18 +67,22 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     flex: 2,
+    top: -40,
   },
   searchContainer: {
     flex: 2,
+    top: -30,
   },
   quickFilterContainer: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 15,
+    top: -40,
   },
   filteredItemsContainer: {
     flex: 12,
     height: 35,
+    top: -80,
   },
 });
