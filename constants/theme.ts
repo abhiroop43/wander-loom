@@ -1,11 +1,13 @@
 export const theme = {
   colors: {
-    bg100: "#eaf4ff",
-    bg200: "#a2d4ff",
-    bg400: "#71b1ff",
-    bg500: "#006fce",
-    bg800: "#00396e",
-    text: "#333",
-    white: "#fff",
+    bg100: '#E3F1FC',
+    bg200: '#BBDFFF',
+    bg400: '#8BD8F9',
+    bg500: '#5495FF',
+    bg600: '#2F75FF',
+    bg700: '#1657FF',
+    bg800: '#003EFF',
+    text: '#5E6A81',
+    white: '#fff',
   },
 };

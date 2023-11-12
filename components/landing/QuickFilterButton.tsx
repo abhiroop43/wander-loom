@@ -23,7 +23,7 @@ const QuickFilterButton = ({ title, selected, onClick, filterParam }: QuickFilte
           <AppText style={styles.selectedButtonText}>{title}</AppText>
         </LinearGradient>
       ) : (
-        <LinearGradient colors={['#f1f1f1', '#f1f1f1']} style={styles.button}>
+        <LinearGradient colors={[theme.colors.white, theme.colors.white]} style={styles.button}>
           <AppText style={styles.deselectedButtonText}>{title}</AppText>
         </LinearGradient>
       )}
