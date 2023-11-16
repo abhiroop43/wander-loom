@@ -6,6 +6,8 @@ import HomeScreen from '../screens/HomeScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
+import { Icon } from '@rneui/themed';
+import { theme } from '../constants/theme';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,13 +19,45 @@ const BottomTabsNavigation = () => {
         headerShown: false,
         tabBarStyle: styles.bottomTab,
         headerStatusBarHeight: 0,
+        tabBarShowLabel: false,
       }}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
-      <Tab.Screen name="Landing" component={LandingScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      <Tab.Screen name="UserProfile" component={UserProfileScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="home" type="octicon" color={color} size={size} />,
+        }}
+      />
+
+      <Tab.Screen
+        name="Favorites"
+        component={FavoritesScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="bookmark" type="octicon" color={color} size={size} />,
+        }}
+      />
+      <Tab.Screen
+        name="Landing"
+        component={LandingScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="apps" type="octicon" color={color} size={size} />,
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="gear" type="octicon" color={color} size={size} />,
+        }}
+      />
+      <Tab.Screen
+        name="UserProfile"
+        component={UserProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Icon name="person" type="octicon" color={color} size={size} />,
+        }}
+      />
     </Tab.Navigator>
   );
 };
