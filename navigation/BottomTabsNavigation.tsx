@@ -20,13 +20,15 @@ const BottomTabsNavigation = () => {
         tabBarStyle: styles.bottomTab,
         headerStatusBarHeight: 0,
         tabBarShowLabel: false,
+        tabBarActiveTintColor: theme.colors.bg500,
+        tabBarInactiveTintColor: theme.colors.text,
       }}
     >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({ color, size }) => <Icon name="home" type="octicon" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Icon name="home" type="ionicon" color={color} size={size} />,
         }}
       />
 
@@ -34,28 +36,28 @@ const BottomTabsNavigation = () => {
         name="Favorites"
         component={FavoritesScreen}
         options={{
-          tabBarIcon: ({ color, size }) => <Icon name="bookmark" type="octicon" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Icon name="bookmark" type="ionicon" color={color} size={size} />,
         }}
       />
       <Tab.Screen
         name="Landing"
         component={LandingScreen}
         options={{
-          tabBarIcon: ({ color, size }) => <Icon name="apps" type="octicon" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Icon name="paper-plane" type="ionicon" color={color} size={size} />,
         }}
       />
       <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
-          tabBarIcon: ({ color, size }) => <Icon name="gear" type="octicon" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Icon name="settings" type="ionicon" color={color} size={size} />,
         }}
       />
       <Tab.Screen
         name="UserProfile"
         component={UserProfileScreen}
         options={{
-          tabBarIcon: ({ color, size }) => <Icon name="person" type="octicon" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <Icon name="person" type="ionicon" color={color} size={size} />,
         }}
       />
     </Tab.Navigator>

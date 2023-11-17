@@ -24,7 +24,7 @@ const PlaceCard = (place: Place) => {
       </View>
       <View>
         <Icon
-          name={place.isFavorite ? 'heart' : 'heart-outline'}
+          name={place.isFavorite ? 'bookmark' : 'bookmark-outline'}
           type="ionicon"
           size={20}
           containerStyle={styles.favoriteIcon}

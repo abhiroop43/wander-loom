@@ -7,6 +7,8 @@ import SearchField from '../components/landing/SearchField';
 import QuickFilterButton from '../components/landing/QuickFilterButton';
 import PlacesCarousel from '../components/landing/PlacesCarousel';
 import PlacesList from '../components/shared/PlacesList';
+import AppText from '../components/shared/AppText';
+import { Link } from '@react-navigation/native';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -59,6 +61,12 @@ const LandingScreen = () => {
       </View>
 
       <View style={styles.favoritePlacesContainer}>
+        <View style={styles.favoritePlacesTitleContainer}>
+          <AppText style={styles.favoritePlacesHeader}>Popular</AppText>
+          <Link style={styles.seeAllLink} to={{ screen: 'Favorites', params: {} }}>
+            See All
+          </Link>
+        </View>
         <PlacesList />
       </View>
     </SafeAreaView>
@@ -100,10 +108,26 @@ const styles = StyleSheet.create({
     // top: -20,
     top: Platform.OS === 'ios' ? -(deviceHeight * 0.03) : 0,
   },
+  favoritePlacesTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginHorizontal: 22,
+    height: 22,
+    marginBottom: 3,
+  },
+  favoritePlacesHeader: {
+    alignItems: 'center',
+    color: theme.colors.text,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  seeAllLink: {
+    color: theme.colors.text,
+    fontSize: 12,
+  },
   favoritePlacesContainer: {
     flex: 5,
-    // width: 400,
-    // height: 200,
     justifyContent: 'space-evenly',
     padding: 0,
     margin: 0,
