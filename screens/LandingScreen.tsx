@@ -5,7 +5,8 @@ import AppHeader from '../components/shared/AppHeader';
 import { theme } from '../constants/theme';
 import SearchField from '../components/landing/SearchField';
 import QuickFilterButton from '../components/landing/QuickFilterButton';
-import PlacesList from '../components/landing/PlacesList';
+import PlacesCarousel from '../components/landing/PlacesCarousel';
+import PlacesList from '../components/shared/PlacesList';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -54,6 +55,10 @@ const LandingScreen = () => {
         />
       </View>
       <View style={styles.filteredItemsContainer}>
+        <PlacesCarousel />
+      </View>
+
+      <View style={styles.favoritePlacesContainer}>
         <PlacesList />
       </View>
     </SafeAreaView>
@@ -90,9 +95,17 @@ const styles = StyleSheet.create({
     // top: -40,
   },
   filteredItemsContainer: {
-    flex: 12,
+    flex: 6,
     height: 35,
     // top: -20,
     top: Platform.OS === 'ios' ? -(deviceHeight * 0.03) : 0,
+  },
+  favoritePlacesContainer: {
+    flex: 5,
+    // width: 400,
+    // height: 200,
+    justifyContent: 'space-evenly',
+    padding: 0,
+    margin: 0,
   },
 });

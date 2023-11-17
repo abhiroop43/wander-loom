@@ -4,7 +4,7 @@ import Carousel from 'react-native-reanimated-carousel';
 import PlaceCard from './PlaceCard';
 import places from '../../data';
 
-const PlacesList = () => {
+const PlacesCarousel = () => {
   const width = Dimensions.get('window').width;
   const height = Dimensions.get('window').height;
 
@@ -27,7 +27,7 @@ const PlacesList = () => {
   );
 };
 
-export default PlacesList;
+export default PlacesCarousel;
 
 const styles = StyleSheet.create({
   carouselContainer: {
