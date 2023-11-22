@@ -7,6 +7,7 @@ import { lightColors, darkColors, createTheme, ThemeProvider } from '@rneui/them
 import { Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import React, { useEffect, useState } from 'react';
 import BottomTabsNavigation from './navigation/BottomTabsNavigation';
+import StackNavigation from './navigation/StackNavigation';
 
 const theme = createTheme({
   lightColors: {
@@ -55,7 +56,8 @@ export default function App() {
       <SafeAreaProvider>
         <StatusBar style="auto" />
         <NavigationContainer>
-          <BottomTabsNavigation />
+          {/* <BottomTabsNavigation /> */}
+          <StackNavigation />
         </NavigationContainer>
       </SafeAreaProvider>
     </ThemeProvider>

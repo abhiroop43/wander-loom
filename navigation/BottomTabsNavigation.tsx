@@ -24,13 +24,13 @@ const BottomTabsNavigation = () => {
         tabBarInactiveTintColor: theme.colors.text,
       }}
     >
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => <Icon name="home" type="ionicon" color={color} size={size} />,
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Favorites"
@@ -46,13 +46,13 @@ const BottomTabsNavigation = () => {
           tabBarIcon: ({ color, size }) => <Icon name="paper-plane" type="ionicon" color={color} size={size} />,
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
           tabBarIcon: ({ color, size }) => <Icon name="settings" type="ionicon" color={color} size={size} />,
         }}
-      />
+      /> */}
       <Tab.Screen
         name="UserProfile"
         component={UserProfileScreen}

@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     shadowRadius: 1,
     // ios shadow end //
     // android shadow start //
-    elevation: 1,
+    // elevation: 2,
     // android shadow end //
   },
   button: {
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     alignItems: 'center',
     width: 110,
+    elevation: 1,
   },
   selectedButtonText: {
     color: theme.colors.white,

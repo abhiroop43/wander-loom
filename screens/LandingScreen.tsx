@@ -16,17 +16,18 @@ import { Place } from '../data';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
-const LandingScreen = () => {
-  const [searchFilterVisible, setSearchFilterVisible] = useState(false);
+const LandingScreen = ({ navigation }: any) => {
+  const [searchFilterVisible, setSearchFilterVisible] = useState<boolean>(true);
   const [quickFilter, setQuickFilter] = useState('');
-  const [detailsPopupVisible, setDetailsPopupVisible] = useState<boolean>(false);
+  // const [detailsPopupVisible, setDetailsPopupVisible] = useState<boolean>(false);
 
   const [selectedPlace, setSelectedPlace] = useState<any>();
 
   const onClickPlace = (place: Place) => {
     // console.log('Place received 1: ' + JSON.stringify(place));
-    setSelectedPlace(place);
-    setDetailsPopupVisible(true);
+    // setSelectedPlace(place);
+    // setDetailsPopupVisible(true);
+    navigation.navigate('DetailsScreen', { place: place });
   };
 
   const onFilterPress = () => {
@@ -81,12 +82,12 @@ const LandingScreen = () => {
         </View>
         <PlacesList onClickPlace={onClickPlace} />
 
-        <BottomSheet isVisible={detailsPopupVisible}>
+        {/* <BottomSheet isVisible={detailsPopupVisible}>
           <PlaceDetails place={selectedPlace} />
           <TouchableOpacity style={styles.closeButtonContainer} onPress={() => setDetailsPopupVisible(false)}>
             <AppText style={styles.closeButtonText}>Close</AppText>
           </TouchableOpacity>
-        </BottomSheet>
+        </BottomSheet> */}
       </View>
     </SafeAreaView>
   );
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
   },
   searchContainer: {
     flex: 2,
-    // top: -30,
+    top: Platform.OS === 'ios' ? -30 : 0,
     padding: 0,
   },
   quickFilterContainer: {
@@ -117,15 +118,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 15,
     marginTop: 10,
-    top: Platform.OS === 'ios' ? -(deviceHeight * 0.03) : 0,
-
-    // top: -40,
+    top: Platform.OS === 'ios' ? -(deviceHeight * 0.06) : -(deviceHeight * 0.03),
   },
   filteredItemsContainer: {
     flex: 6,
     height: 35,
     // top: -20,
-    top: Platform.OS === 'ios' ? -(deviceHeight * 0.03) : 0,
+    top: Platform.OS === 'ios' ? -(deviceHeight * 0.07) : -(deviceHeight * 0.03),
   },
   favoritePlacesTitleContainer: {
     flexDirection: 'row',
@@ -148,8 +147,6 @@ const styles = StyleSheet.create({
   favoritePlacesContainer: {
     flex: 5,
     justifyContent: 'space-evenly',
-    padding: 0,
-    margin: 0,
   },
 
   // large button with rounded corners

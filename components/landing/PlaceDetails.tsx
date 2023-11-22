@@ -1,34 +1,22 @@
 import React from 'react';
-import { Dimensions, View, StyleSheet, Text, Image, ScrollView } from 'react-native';
-// import { RouteProp } from '@react-navigation/native';
+import { Dimensions, View, StyleSheet, Image, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { theme } from '../../constants/theme';
-import AppHeader from '../shared/AppHeader';
 import { Place } from '../../data';
+import AppText from '../shared/AppText';
 
-// type RootStackParamList = {
-//   DetailScreen: { place: Place };
-// };
-
-// type DetailScreenRouteProp = RouteProp<RootStackParamList, 'DetailScreen'>;
-
-// type DetailScreenProps = {
-//   route: DetailScreenRouteProp;
-// };
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 const PlaceDetails = ({ place }: { place: Place }) => {
-  // const { place } = route.params;
-
   return (
     <SafeAreaView style={styles.rootContainer}>
-      <AppHeader title={place.name} />
+      {/* <AppHeader title={place.name} /> */}
+      <Image source={place.imageUrl} style={styles.image} resizeMode="cover" />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Image source={place.imageUrl} style={styles.image} resizeMode="cover" />
         <View style={styles.detailsContainer}>
-          <Text style={styles.placeName}>{place.name}</Text>
-          <Text style={styles.placeLocation}>{place.country}</Text>
-          <Text style={styles.placeDescription}>{place.description}</Text>
+          <AppText style={styles.placeName}>{place.name}</AppText>
+          <AppText style={styles.placeLocation}>{place.country}</AppText>
+          <AppText style={styles.placeDescription}>{place.description}</AppText>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -45,11 +33,13 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   image: {
-    height: 200, // Adjust the height as needed
+    height: 300, // Adjust the height as needed
     width: '100%',
   },
   detailsContainer: {
+    flex: 1,
     padding: 20,
+    backgroundColor: theme.colors.white,
   },
   placeName: {
     fontSize: 24,
