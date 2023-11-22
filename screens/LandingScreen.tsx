@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, View, StyleSheet, Platform, TouchableOpacity } from 'react-native';
+import { Dimensions, View, StyleSheet, Platform, KeyboardAvoidingView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AppHeader from '../components/shared/AppHeader';
 import { theme } from '../constants/theme';
@@ -9,8 +9,6 @@ import PlacesCarousel from '../components/landing/PlacesCarousel';
 import PlacesList from '../components/shared/PlacesList';
 import AppText from '../components/shared/AppText';
 import { Link } from '@react-navigation/native';
-import { BottomSheet, BottomSheetProps, Button } from '@rneui/themed';
-import PlaceDetails from '../components/landing/PlaceDetails';
 import { Place } from '../data';
 
 const deviceWidth = Dimensions.get('window').width;
@@ -19,14 +17,8 @@ const deviceHeight = Dimensions.get('window').height;
 const LandingScreen = ({ navigation }: any) => {
   const [searchFilterVisible, setSearchFilterVisible] = useState<boolean>(true);
   const [quickFilter, setQuickFilter] = useState('');
-  // const [detailsPopupVisible, setDetailsPopupVisible] = useState<boolean>(false);
-
-  const [selectedPlace, setSelectedPlace] = useState<any>();
 
   const onClickPlace = (place: Place) => {
-    // console.log('Place received 1: ' + JSON.stringify(place));
-    // setSelectedPlace(place);
-    // setDetailsPopupVisible(true);
     navigation.navigate('DetailsScreen', { place: place });
   };
 
@@ -34,6 +26,11 @@ const LandingScreen = ({ navigation }: any) => {
     setSearchFilterVisible(!searchFilterVisible);
   };
   return (
+    // <KeyboardAvoidingView
+    //   behavior="padding"
+    //   style={{ flex: 1 }}
+    //   keyboardVerticalOffset={Platform.OS === 'ios' ? -350 : -100}
+    // >
     <SafeAreaView style={styles.rootContainer}>
       <View style={styles.headerContainer}>
         <AppHeader title="Explore" onBackPress={() => {}} onFilterPress={onFilterPress} />
@@ -72,24 +69,19 @@ const LandingScreen = ({ navigation }: any) => {
       <View style={styles.filteredItemsContainer}>
         <PlacesCarousel />
       </View>
-
-      <View style={styles.favoritePlacesContainer}>
-        <View style={styles.favoritePlacesTitleContainer}>
-          <AppText style={styles.favoritePlacesHeader}>Popular</AppText>
-          <Link style={styles.seeAllLink} to={{ screen: 'Favorites', params: {} }}>
-            See All
-          </Link>
+      <View style={{ top: deviceHeight * 0.32 }}>
+        <View style={styles.favoritePlacesContainer}>
+          <View style={styles.favoritePlacesTitleContainer}>
+            <AppText style={styles.favoritePlacesHeader}>Popular</AppText>
+            <Link style={styles.seeAllLink} to={{ screen: 'Favorites', params: {} }}>
+              See All
+            </Link>
+          </View>
+          <PlacesList onClickPlace={onClickPlace} />
         </View>
-        <PlacesList onClickPlace={onClickPlace} />
-
-        {/* <BottomSheet isVisible={detailsPopupVisible}>
-          <PlaceDetails place={selectedPlace} />
-          <TouchableOpacity style={styles.closeButtonContainer} onPress={() => setDetailsPopupVisible(false)}>
-            <AppText style={styles.closeButtonText}>Close</AppText>
-          </TouchableOpacity>
-        </BottomSheet> */}
       </View>
     </SafeAreaView>
+    // {/* </KeyboardAvoidingView> */}
   );
 };
 
@@ -100,38 +92,39 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.bg100,
     flex: 1,
     flexDirection: 'column',
+    // top: Platform.OS === 'ios' ? -45 : 0,
   },
   headerContainer: {
-    flex: 2.3,
+    // flex: 2.3,
     alignItems: 'center',
-    top: Platform.OS === 'ios' ? -(deviceHeight * 0.06) : 0,
+    // top: Platform.OS === 'ios' ? -(deviceHeight * 0.06) : 0,
     // top: -(deviceHeight * 0.05),
   },
   searchContainer: {
-    flex: 2,
-    top: Platform.OS === 'ios' ? -30 : 0,
+    // flex: 2,
+    // top: Platform.OS === 'ios' ? -30 : 0,
     padding: 0,
   },
   quickFilterContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 15,
     marginTop: 10,
-    top: Platform.OS === 'ios' ? -(deviceHeight * 0.06) : -(deviceHeight * 0.03),
+    // top: Platform.OS === 'ios' ? -(deviceHeight * 0.06) : -(deviceHeight * 0.03),
   },
   filteredItemsContainer: {
-    flex: 6,
+    // flex: 6,
     height: 35,
     // top: -20,
-    top: Platform.OS === 'ios' ? -(deviceHeight * 0.07) : -(deviceHeight * 0.03),
+    // top: Platform.OS === 'ios' ? -(deviceHeight * 0.07) : -(deviceHeight * 0.04),
   },
   favoritePlacesTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginHorizontal: 22,
-    height: 22,
+    height: 40,
     marginBottom: 3,
   },
   favoritePlacesHeader: {
@@ -145,8 +138,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   favoritePlacesContainer: {
-    flex: 5,
+    // flex: 6,
     justifyContent: 'space-evenly',
+    // backgroundColor: 'black'
   },
 
   // large button with rounded corners

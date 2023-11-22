@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Font from 'expo-font';
-import { Platform, View, Text } from 'react-native';
+import { Dimensions, Platform, View, Text, KeyboardAvoidingView } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { lightColors, darkColors, createTheme, ThemeProvider } from '@rneui/themed';
 import { Poppins_400Regular, Poppins_600SemiBold, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import React, { useEffect, useState } from 'react';
-import BottomTabsNavigation from './navigation/BottomTabsNavigation';
 import StackNavigation from './navigation/StackNavigation';
+
+const deviceHeight = Dimensions.get('window').height;
 
 const theme = createTheme({
   lightColors: {
@@ -55,8 +56,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         <StatusBar style="auto" />
+
         <NavigationContainer>
-          {/* <BottomTabsNavigation /> */}
           <StackNavigation />
         </NavigationContainer>
       </SafeAreaProvider>

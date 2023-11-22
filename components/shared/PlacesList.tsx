@@ -18,9 +18,6 @@ const PlacesList = ({ onClickPlace }: PlacesListProps) => {
   const navigation = useNavigation();
 
   const navigateToDestinationDetails = (place: Place) => {
-    // Navigate to the destination details screen with the selected destination
-    // navigation.navigate('Details' );
-    // console.log(place);
     onClickPlace(place);
   };
 

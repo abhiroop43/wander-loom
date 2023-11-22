@@ -4,7 +4,7 @@ import { Place } from '../data';
 
 const DetailScreen = ({ route }: any) => {
   const { place }: { place: Place } = route.params;
-  console.log('Place received 2: ' + JSON.stringify(place));
+  // console.log('Place received 2: ' + JSON.stringify(place));
 
   return <PlaceDetails place={place} />;
 };

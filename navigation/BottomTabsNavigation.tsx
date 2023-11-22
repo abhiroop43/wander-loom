@@ -1,10 +1,8 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LandingScreen from '../screens/LandingScreen';
-import HomeScreen from '../screens/HomeScreen';
 import FavoritesScreen from '../screens/FavoritesScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import UserProfileScreen from '../screens/UserProfileScreen';
 import { Icon } from '@rneui/themed';
 import { theme } from '../constants/theme';
@@ -77,5 +75,8 @@ const styles = StyleSheet.create({
     // android shadow start //
     elevation: 2,
     // android shadow end //
+    // height: Platform.OS === 'ios' ? 65 : 50,
+    // paddingVertical: Platform.OS === 'ios' ? 10 : 2,
+    // backgroundColor: 'green',
   },
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform, Dimensions } from 'react-native';
 import { Header, Icon } from '@rneui/themed';
 import { theme } from '../../constants/theme';
 
@@ -8,6 +8,9 @@ interface AppHeaderProps {
   onFilterPress?: any;
   title: string;
 }
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Dimensions.get('window').height;
 
 const AppHeader = ({ title, onBackPress, onFilterPress }: AppHeaderProps) => {
   return (
@@ -38,10 +41,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     borderBottomWidth: 0, // Remove the default bottom border
     borderTopWidth: 0,
-    marginTop: 5,
+    marginTop: 0,
     paddingTop: 0,
-    // top: -20,
-    // height: 10,
+    height: deviceHeight / 10,
+    alignItems: 'flex-start',
+    top: Platform.OS === 'ios' ? -40 : 0,
+    marginBottom: Platform.OS === 'ios' ? -10 : 0,
   },
 });
 

@@ -11,6 +11,7 @@ const StackNavigation = () => {
       initialRouteName="Main"
       screenOptions={{
         headerShown: false,
+        
       }}
     >
       <Stack.Screen name="Main" component={BottomTabsNavigation} />
