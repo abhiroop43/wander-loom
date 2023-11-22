@@ -4,8 +4,8 @@ import { Header, Icon } from '@rneui/themed';
 import { theme } from '../../constants/theme';
 
 interface AppHeaderProps {
-  onBackPress: any;
-  onFilterPress: any;
+  onBackPress?: any;
+  onFilterPress?: any;
   title: string;
 }
 

@@ -10,16 +10,21 @@ import { theme } from '../../constants/theme';
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
 
-const PlacesList = () => {
+interface PlacesListProps {
+  onClickPlace?: any;
+}
+
+const PlacesList = ({ onClickPlace }: PlacesListProps) => {
   const navigation = useNavigation();
 
   const navigateToDestinationDetails = (place: Place) => {
     // Navigate to the destination details screen with the selected destination
-    // navigation.navigate('DestinationDetails', { destination });
-    console.log(place);
+    // navigation.navigate('Details' );
+    // console.log(place);
+    onClickPlace(place);
   };
 
-  const renderDestinationItem = ({ item }: { Place }) => {
+  const renderDestinationItem = ({ item }: { item: Place }) => {
     return (
       <TouchableOpacity style={styles.button} onPress={() => navigateToDestinationDetails(item)}>
         <Card wrapperStyle={styles.cardWrapper} containerStyle={styles.cardContainer}>

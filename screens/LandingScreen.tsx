@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, View, StyleSheet, Platform } from 'react-native';
+import { Dimensions, View, StyleSheet, Platform, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AppHeader from '../components/shared/AppHeader';
 import { theme } from '../constants/theme';
@@ -9,6 +9,9 @@ import PlacesCarousel from '../components/landing/PlacesCarousel';
 import PlacesList from '../components/shared/PlacesList';
 import AppText from '../components/shared/AppText';
 import { Link } from '@react-navigation/native';
+import { BottomSheet, BottomSheetProps, Button } from '@rneui/themed';
+import PlaceDetails from '../components/landing/PlaceDetails';
+import { Place } from '../data';
 
 const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Dimensions.get('window').height;
@@ -16,6 +19,15 @@ const deviceHeight = Dimensions.get('window').height;
 const LandingScreen = () => {
   const [searchFilterVisible, setSearchFilterVisible] = useState(false);
   const [quickFilter, setQuickFilter] = useState('');
+  const [detailsPopupVisible, setDetailsPopupVisible] = useState<boolean>(false);
+
+  const [selectedPlace, setSelectedPlace] = useState<any>();
+
+  const onClickPlace = (place: Place) => {
+    // console.log('Place received 1: ' + JSON.stringify(place));
+    setSelectedPlace(place);
+    setDetailsPopupVisible(true);
+  };
 
   const onFilterPress = () => {
     setSearchFilterVisible(!searchFilterVisible);
@@ -67,7 +79,14 @@ const LandingScreen = () => {
             See All
           </Link>
         </View>
-        <PlacesList />
+        <PlacesList onClickPlace={onClickPlace} />
+
+        <BottomSheet isVisible={detailsPopupVisible}>
+          <PlaceDetails place={selectedPlace} />
+          <TouchableOpacity style={styles.closeButtonContainer} onPress={() => setDetailsPopupVisible(false)}>
+            <AppText style={styles.closeButtonText}>Close</AppText>
+          </TouchableOpacity>
+        </BottomSheet>
       </View>
     </SafeAreaView>
   );
@@ -131,5 +150,21 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     padding: 0,
     margin: 0,
+  },
+
+  // large button with rounded corners
+  closeButtonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10,
+    // marginHorizontal: 20,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: theme.colors.bg500,
+  },
+  closeButtonText: {
+    color: theme.colors.white,
   },
 });
